@@ -1,0 +1,29 @@
+name: Starter Workflow-2
+
+on:
+   push:
+    branches: ["main"]
+
+jobs:
+    build:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout Repository
+          uses: actions/checkout@v4
+
+        - name: Setup NodeJS Version - 20.x
+          uses: actions/setup-node@v4
+          with:
+            node-version: '20.x'
+        
+        - name: Install Dependencies-faslan
+          run: npm install
+
+        - name: Install Dependencies-ahmad
+          run: echo "main"
+
+        - name: Unit Testing
+          run: npm test --if-present
+
+        - name: Install Dependencies
+          run: npm run coverage --if-present
